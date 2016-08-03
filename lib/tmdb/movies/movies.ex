@@ -9,8 +9,8 @@ defmodule Tmdb.Movies do
     get!("genre/movie/list?").body
   end
 
-  def images(movie) do
-    get!("movie/#{movie.tmdb_id}/images?").body
+  def images(id, params \\ %{}) do
+    get!("movie/#{id}/images?#{URI.encode_query(params)}").body
   end
 
   def latest(params \\ %{}) do
@@ -30,8 +30,8 @@ defmodule Tmdb.Movies do
     get!("search/movie?#{URI.encode_query(params)}&append_to_response=videos").body
   end
 
-  def similar(movie, params \\ %{}) do
-    get!("movie/#{movie.tmdb_id}/similar?#{URI.encode_query(params)}&append_to_response=videos").body
+  def similar(id, params \\ %{}) do
+    get!("movie/#{id}/similar?#{URI.encode_query(params)}&append_to_response=videos").body
   end
 
   def top(params \\ %{}) do
@@ -42,8 +42,8 @@ defmodule Tmdb.Movies do
     get!("movie/upcoming?#{URI.encode_query(params)}&append_to_response=videos").body
   end
 
-  def videos(movie) do
-    get!("movie/#{movie.tmdb_id}/videos?").body
+  def videos(id, params \\ %{}) do
+    get!("movie/#{id}/videos?#{URI.encode_query(params)}").body
   end
 
   # Example response:
