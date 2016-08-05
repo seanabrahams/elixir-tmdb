@@ -1,13 +1,13 @@
 defmodule Tmdb.People do
   use HTTPoison.Base
 
-  def find(id) do
-    get!("person/#{id}?")
+  def find(id, params \\ %{}) do
+    get!("person/#{id}?#{URI.encode_query(params)}").body
   end
 
-  def find_all(id) do
-    get!("person/#{id}?append_to_response=movie_credits,tv_credits,external_ids,images,tagged_images,changes").body
-  end
+  # TODO: Regarding `find_all` I think what you want is to update `find(id)` to `find(id, params \\ %{})` and allow people to pass in what they want the value of `added_to_response` to be.
+  # So you'd call `Tmdb.People.find(some_id, %{added_to_response: "movie_credits,tv_credits"})`
+  ## ?append_to_response=movie_credits,tv_credits,external_ids,images,tagged_images,changes
 
   def popular(params \\ %{}) do
     get!("person/popular?#{URI.encode_query(params)}").body

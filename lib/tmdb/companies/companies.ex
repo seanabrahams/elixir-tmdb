@@ -1,5 +1,6 @@
 defmodule Tmdb.Companies do
   use HTTPoison.Base
+  
   @doc ~S"""
   Find companies by ID
     ## Required Parameters

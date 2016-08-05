@@ -1,5 +1,6 @@
 defmodule Tmdb.Collections do
   use HTTPoison.Base
+
   def find(id) do
     get!("collection/#{id}?").body
   end
@@ -31,7 +32,7 @@ defmodule Tmdb.Collections do
     get!("search/collection?#{URI.encode_query(params)}").body
   end
  # TODO: collection/id/images
- 
+
   defp process_response_body(body) do
     body
     |> Poison.decode!
