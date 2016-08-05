@@ -14,7 +14,6 @@ defmodule Tmdb.Collections do
     page:	Minimum 1, maximum 1000.
     language:	ISO 639-1 code.
     ## Examples
-
     iex> Tmdb.Search.collection("Star")
     %{"page" => 1,
       "results" => [

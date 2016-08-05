@@ -1,15 +1,13 @@
 defmodule Tmdb.Companies do
   use HTTPoison.Base
-  
+
   @doc ~S"""
   Find companies by ID
     ## Required Parameters
     api_key
     ## Optional Parameters
     append_to_response:	Comma separated, any company method
-
     ## Examples
-
     iex> Tmdb.Companies.find(420)
     %{"description" => nil, "headquarters" => nil, "homepage" => nil, "id" => 420,
       "logo_path" => "/x1ynrDnk4RgbsnMI9yrdcdEm6Fu.png", "name" => "Marvel Studios",
@@ -26,9 +24,7 @@ defmodule Tmdb.Companies do
     query:	CGI escaped string
     ## Optional Parameters
     page:	Minimum 1, maximum 1000.
-
     ## Examples
-
     iex> Tmdb.Search.collection("Star")
     %{"page" => 1,
       "results" => [

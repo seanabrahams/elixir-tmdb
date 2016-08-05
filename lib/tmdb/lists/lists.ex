@@ -9,12 +9,11 @@ defmodule Tmdb.Lists do
     params = Map.merge(params, %{"query" => query})
     get!("search/list?#{URI.encode_query(params)}").body
   end
-  
+
   def item_status(list_id, movie_id) do
     get!("list/#{list_id}/item_status?movie_id=#{movie_id}").body
   end
 
-  # TODO: POST /list to create a new list (media_)
   defp process_response_body(body) do
     body
     |> Poison.decode!

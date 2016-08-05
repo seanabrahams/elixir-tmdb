@@ -23,7 +23,6 @@ defmodule Tmdb.Networks do
     get!("discover/tv?with_networks=#{id}").body
   end
 
-
   defp process_response_body(body) do
     body
     |> Poison.decode!
