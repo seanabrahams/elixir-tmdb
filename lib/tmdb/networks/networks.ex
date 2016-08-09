@@ -14,7 +14,7 @@ defmodule Tmdb.Networks do
     %{"description" => nil, "headquarters" => nil, "homepage" => nil, "id" => 420,
       "logo_path" => "/x1ynrDnk4RgbsnMI9yrdcdEm6Fu.png", "name" => "Marvel Studios",
       "parent_company" => nil}
- """
+  """
   def find(id) do
     get!("network/#{id}?").body
   end
@@ -32,5 +32,4 @@ defmodule Tmdb.Networks do
     api_key = Application.fetch_env!(:tmdb, :api_key)
     "https://api.themoviedb.org/3/" <> url <> "&api_key=#{api_key}"
   end
-
 end

@@ -2,7 +2,6 @@
 defmodule Tmdb.Keywords do
   @moduledoc """
   Keywords Endpoint
-
   ## Available functions for keywords
   Tmdb.Keywords.find(1721) # Find a keyword and its name by keyword id
   Tmdb.Keywords.search("fight") # Search for keywords by text
@@ -13,15 +12,10 @@ defmodule Tmdb.Keywords do
   Get the basic information for a specific keyword id.
     ## Required Parameters
     api_key
-
     ## Examples
-    iex> Tmdb.Keywords.find(420)
-    %{"description" => nil, "headquarters" => nil, "homepage" => nil, "id" => 420,
-      "logo_path" => "/x1ynrDnk4RgbsnMI9yrdcdEm6Fu.png", "name" => "Marvel Studios",
-      "parent_company" => nil}
-
-
- """
+    iex> Tmdb.Keywords.find(1721)
+    %{"id" => 1721, "name" => "fight"}
+  """
   def find(id) do
     get!("keyword/#{id}?").body
   end
@@ -55,38 +49,12 @@ defmodule Tmdb.Keywords do
        %{"id" => 188933, "name" => "bar fight"},
        %{"id" => 189274, "name" => "hotel fight"}], "total_pages" => 6,
       "total_results" => 109}
- """
+  """
   def search(query, params \\ %{}) do
     params = Map.merge(params, %{"query" => query})
     get!("search/keyword?#{URI.encode_query(params)}").body
   end
-  @doc """
-  Get the list of movies for a particular keyword by id.
-    ## Required Parameters
-    api_key
-    query: CGI escaped string
-    ## Optional Parameters
-      page: minimum 1, maximum 1000.
-      language: ISO 639-1code.
-    TODO: Add example with params used
 
-    ## Examples
-      iex(4)>   Tmdb.Keywords.movies(1721) # find movies by a keyword ID
-      %{"id" => 1721, "page" => 1,
-      "results" => [%{"adult" => false,
-       "backdrop_path" => "/xy74anT8ZGhUIGVoalnHrmRDHbQ.jpg",
-       "genre_ids" => [28, 12, 14], "id" => 205584,
-       "original_language" => "en", "original_title" => "Gods of Egypt",
-       "overview" => "A common thief joins a mythical god on a quest through Egypt.",
-       "popularity" => 5.5729,
-       "poster_path" => "/uPqAW07bGoljf3cmT5gecdOvVol.jpg",
-       "release_date" => "2016-02-25", "title" => "Gods of Egypt",
-       "video" => false, "vote_average" => 5.0, "vote_count" => 531},
-
-       ...
-
-       "total_pages" => 13, "total_results" => 241}
-  """
   def movies(id) do
     get!("keyword/#{id}/movies?").body
   end

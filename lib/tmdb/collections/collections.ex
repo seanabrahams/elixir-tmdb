@@ -24,13 +24,16 @@ defmodule Tmdb.Collections do
       "poster_path" => "/p3Zc72CqZJveY3psC7aCuaMUI9W.jpg"}
       ], "total_pages" => 1,
       "total_results" => 18}
-   """
- # TODO: Add Optional Parameter for language.
+  """
   def search(query, params \\ %{}) do
     params = Map.merge(params, %{"query" => query})
     get!("search/collection?#{URI.encode_query(params)}").body
   end
- # TODO: collection/id/images
+
+  def images(id, query, params \\ %{}) do
+    params = Map.merge(params, %{"query" => query})
+    get!("collection/#{id}/images?#{URI.encode_query(params)}").body
+  end
 
   defp process_response_body(body) do
     body
