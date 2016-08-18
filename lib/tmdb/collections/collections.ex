@@ -31,7 +31,6 @@ defmodule Tmdb.Collections do
   end
 
   def images(id, params \\ %{}) do
-    params = Map.merge(params, %{"id" => id})
     get!("collection/#{id}/images?#{URI.encode_query(params)}").body
   end
 
