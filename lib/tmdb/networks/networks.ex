@@ -10,10 +10,8 @@ defmodule Tmdb.Networks do
 
     ## Examples
 
-    iex> Tmdb.Companies.find(420)
-    %{"description" => nil, "headquarters" => nil, "homepage" => nil, "id" => 420,
-      "logo_path" => "/x1ynrDnk4RgbsnMI9yrdcdEm6Fu.png", "name" => "Marvel Studios",
-      "parent_company" => nil}
+    iex(3)> Tmdb.Networks.find(4)
+    %{"id" => 4, "name" => "BBC One"}
   """
   def find(id) do
     get!("network/#{id}?").body
