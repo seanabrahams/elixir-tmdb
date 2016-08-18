@@ -7,9 +7,7 @@ defmodule Tmdb.Networks do
     api_key
     ## Optional Parameters
     append_to_response:	Comma separated, any company method
-
     ## Examples
-
     iex(3)> Tmdb.Networks.find(4)
     %{"id" => 4, "name" => "BBC One"}
   """
