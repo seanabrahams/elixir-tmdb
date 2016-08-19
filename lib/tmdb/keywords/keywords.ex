@@ -1,13 +1,15 @@
-
 defmodule Tmdb.Keywords do
   @moduledoc """
   Keywords Endpoint
+
   ## Available functions for keywords
+
   Tmdb.Keywords.find(1721) # Find a keyword and its name by keyword id
   Tmdb.Keywords.search("fight") # Search for keywords by text
   Tmdb.Keywords.movies(1721) # find movies by a keyword ID
   """
-  use HTTPoison.Base
+  use Tmdb.Base
+
   @doc ~S"""
   Get the basic information for a specific keyword id.
     ## Required Parameters
@@ -19,6 +21,7 @@ defmodule Tmdb.Keywords do
   def find(id) do
     get!("keyword/#{id}?").body
   end
+
   @doc ~S"""
   Search for keywords by text
     ## Required Parameters
@@ -57,15 +60,5 @@ defmodule Tmdb.Keywords do
 
   def movies(id) do
     get!("keyword/#{id}/movies?").body
-  end
-
-  defp process_response_body(body) do
-    body
-    |> Poison.decode!
-  end
-
-  defp process_url(url) do
-    api_key = Application.fetch_env!(:tmdb, :api_key)
-    "https://api.themoviedb.org/3/" <> url <> "&api_key=#{api_key}"
   end
 end
