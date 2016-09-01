@@ -12,9 +12,4 @@ defmodule Tmdb.People do
   def latest(params \\ %{}) do
     get!("person/latest?#{URI.encode_query(params)}").body
   end
-
-  def search(query, params \\ %{}) do
-    params = Map.merge(params, %{"query" => query})
-    get!("search/person?#{URI.encode_query(params)}").body
-  end
 end

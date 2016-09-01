@@ -40,5 +40,4 @@ defmodule Tmdb.Search do
     params = Map.merge(params, %{"query" => query})
     get!("search/tv?#{URI.encode_query(params)}&append_to_response=videos").body
   end
-
 end
