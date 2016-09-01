@@ -25,11 +25,6 @@ defmodule Tmdb.Movies do
     get!("movie/popular?#{URI.encode_query(params)}&append_to_response=videos").body
   end
 
-  def search(query, params \\ %{}) do
-    params = Map.merge(params, %{"query" => query})
-    get!("search/movie?#{URI.encode_query(params)}&append_to_response=videos").body
-  end
-
   def similar(id, params \\ %{}) do
     get!("movie/#{id}/similar?#{URI.encode_query(params)}&append_to_response=videos").body
   end
