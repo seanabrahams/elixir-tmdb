@@ -24,7 +24,9 @@ You will need an <a href="https://www.themoviedb.org/account">account</a> and <a
 ## Usage
 
 ```elixir
-Tmdb.Movies.search("coherence") # Search for a specific movie
+Tmdb.Search.movies("coherence") # Search for a specific movie
+Tmdb.Search.tv("brain dead") # Search for a specific tv show
+
 Tmdb.Movies.popular() # Movies that are currently popular
 Tmdb.Movies.top() # Most highly rated movies regardless of release date
 ```
