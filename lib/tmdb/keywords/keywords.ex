@@ -53,11 +53,6 @@ defmodule Tmdb.Keywords do
        %{"id" => 189274, "name" => "hotel fight"}], "total_pages" => 6,
       "total_results" => 109}
   """
-  def search(query, params \\ %{}) do
-    params = Map.merge(params, %{"query" => query})
-    get!("search/keyword?#{URI.encode_query(params)}").body
-  end
-
   def movies(id) do
     get!("keyword/#{id}/movies?").body
   end

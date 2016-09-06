@@ -25,11 +25,6 @@ defmodule Tmdb.Collections do
       ], "total_pages" => 1,
       "total_results" => 18}
   """
-  def search(query, params \\ %{}) do
-    params = Map.merge(params, %{"query" => query})
-    get!("search/collection?#{URI.encode_query(params)}").body
-  end
-
   def images(id, params \\ %{}) do
     get!("collection/#{id}/images?#{URI.encode_query(params)}").body
   end

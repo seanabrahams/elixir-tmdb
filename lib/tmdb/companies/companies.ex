@@ -34,11 +34,6 @@ defmodule Tmdb.Companies do
        ], "total_pages" => 1,
       "total_results" => 3}
   """
-  def search(query, params \\ %{}) do
-    params = Map.merge(params, %{"query" => query})
-    get!("search/company?#{URI.encode_query(params)}").body
-  end
-
   def movies(id) do
     get!("company/#{id}/movies?").body
   end
