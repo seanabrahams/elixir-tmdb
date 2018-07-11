@@ -29,7 +29,7 @@ defmodule Tmdb.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.8"},
-      {:poison, "~> 1.5 or ~> 2.0"}
+      {:poison, "~> 1.5 or ~> 2.0 or ~> 3.0"}
     ]
   end
 end
